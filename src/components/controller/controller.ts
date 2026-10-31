@@ -11,7 +11,7 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: MouseEvent, callback: (data: { articles: NewsArticle[] }) => void) {
+    getNews(e: MouseEvent, callback: (data: { articles: NewsArticle[] }) => void): void {
         let target = e.target as HTMLElement;
         const newsContainer = e.currentTarget as HTMLElement;
 

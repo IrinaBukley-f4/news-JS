@@ -13,7 +13,10 @@ class Loader {
         this.options = options;
     }
 
-    public getResp<T>(params: { endpoint: string; options?: Record<string, unknown> }, callback: (data: T) => void): void {
+    public getResp<T>(
+        params: { endpoint: string; options?: Record<string, unknown> },
+        callback: (data: T) => void
+    ): void {
         const { endpoint, options } = params;
         this.load('GET', endpoint, callback, options);
     }
@@ -40,9 +43,9 @@ class Loader {
     }
 
     private load<T>(
-        method: string, 
-        endpoint: string, 
-        callback: (data: T) => void, 
+        method: string,
+        endpoint: string,
+        callback: (data: T) => void,
         options: Record<string, unknown> = {}
     ): void {
         fetch(this.makeUrl(options, endpoint), { method })

@@ -2,8 +2,9 @@ import './news.css';
 import type { NewsArticle } from '../../../utils/types';
 
 class News {
-    draw(data: NewsArticle[]) {
-        const news: NewsArticle[] = data.length >= 10 ? data.filter((_item: NewsArticle, idx: number) => idx < 10) : data;
+    draw(data: NewsArticle[]): void {
+        const news: NewsArticle[] =
+            data.length >= 10 ? data.filter((_item: NewsArticle, idx: number) => idx < 10) : data;
 
         const fragment: DocumentFragment = document.createDocumentFragment();
         const newsItemTemp = document.querySelector('#newsItemTemp') as HTMLTemplateElement;
@@ -16,7 +17,8 @@ class News {
             (newsClone.querySelector('.news__meta-photo') as HTMLElement).style.backgroundImage = `url(${
                 item.urlToImage || 'img/news_placeholder.jpg'
             })`;
-            (newsClone.querySelector('.news__meta-author') as HTMLElement).textContent = item.author || item.source.name;
+            (newsClone.querySelector('.news__meta-author') as HTMLElement).textContent =
+                item.author || item.source.name;
             (newsClone.querySelector('.news__meta-date') as HTMLElement).textContent = item.publishedAt
                 .slice(0, 10)
                 .split('-')
