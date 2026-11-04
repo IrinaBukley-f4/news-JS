@@ -1,3 +1,8 @@
+export enum HttpMethod {
+    GET = 'GET',
+    POST = 'POST',
+}
+
 type LoaderOptions = {
     method?: string;
     headers?: Record<string, string>;
@@ -18,7 +23,7 @@ class Loader {
         callback: (data: T) => void
     ): void {
         const { endpoint, options } = params;
-        this.load('GET', endpoint, callback, options);
+        this.load(HttpMethod.GET, endpoint, callback, options);
     }
 
     private errorHandler(res: Response): Response {
@@ -43,7 +48,7 @@ class Loader {
     }
 
     private load<T>(
-        method: string,
+        method: HttpMethod,
         endpoint: string,
         callback: (data: T) => void,
         options: Record<string, unknown> = {}
